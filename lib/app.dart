@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_jun/pages/HomePage.dart';
+import 'package:flutter_jun/pages/home/HomePage.dart';
 import 'package:flutter_jun/router/app_router.dart';
 
 class App extends StatefulWidget {

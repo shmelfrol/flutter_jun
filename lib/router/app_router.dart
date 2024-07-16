@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_jun/pages/CatalogPage.dart';
-import 'package:flutter_jun/pages/HomePage.dart';
-import 'package:flutter_jun/pages/LayoutForPage.dart';
-import 'package:flutter_jun/pages/SelectionPage.dart';
+import 'package:flutter_jun/pages/catalog/CatalogPage.dart';
+import 'package:flutter_jun/pages/home/HomePage.dart';
+import 'package:flutter_jun/pages/layout/LayoutForPage.dart';
+import 'package:flutter_jun/pages/selection/SelectionPage.dart';
 
 
 
@@ -18,7 +18,9 @@ class AppRouter extends _$AppRouter {
  List<AutoRoute> get routes => [
  AutoRoute(page: LayoutForRoute.page, path: '/', children: [
  AutoRoute(page: SelectionRoute.page, path: 'selection'),
- AutoRoute(page: CatalogRoute.page, path: 'catalog')
+ AutoRoute(page: CatalogRoute.page, path: 'catalog'),
+ AutoRoute(page: HomeRoute.page, path: 'home')
+
 
 
  ]),

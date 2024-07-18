@@ -40,9 +40,6 @@ class _HeaderState extends State<Header> {
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
        height: 100,
-      //  decoration: const BoxDecoration(
-      //    color: Color.fromARGB(255, 172, 121, 121),
-      //  ),
        child: Padding(
          padding: const EdgeInsets.all(10.0),
          child: Row(

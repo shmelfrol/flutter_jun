@@ -25,7 +25,7 @@ class MenuItemWidget extends StatelessWidget {
         onPressed: () {
          setRoute(path);
          context.router.push(route);},
-        onHover: (value) => print(currentRoute),
+        //onHover: (value) => print(currentRoute),
         child: Text(
           title, style: TextStyle(
             fontWeight: currentRoute == path ? FontWeight.bold : FontWeight.normal

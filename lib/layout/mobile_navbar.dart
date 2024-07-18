@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_jun/router/app_router.dart';
 
 
 class MobileMenu extends StatelessWidget {
@@ -18,14 +20,14 @@ class MobileMenu extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              MobileMenuItem(title: "Глвная",),
+              MobileMenuItem(title: "Главная", route: HomeRoute(title: "Главная"),),
               const Padding(
                 padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                 child: Divider(
                 ),
               ),
-              MobileMenuItem(title: "Каталог",),
-              MobileMenuItem(title: "Подборка",),
+              MobileMenuItem(title: "Каталог", route: const CatalogRoute(),),
+              MobileMenuItem(title: "Подборка", route: const SelectionRoute(),),
               const Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
@@ -48,15 +50,17 @@ class MobileMenu extends StatelessWidget {
 
 class MobileMenuItem extends StatelessWidget {
   String title;
+  PageRouteInfo<dynamic> route;
   MobileMenuItem({
     super.key,
+    required this.route,
     required this.title
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {print(title);},
+      onTap: () {context.router.push(route);},
       child: Text(
         title,
         style: TextStyle(color: Colors.white, fontSize: 22),

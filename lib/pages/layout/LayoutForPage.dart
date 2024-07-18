@@ -11,6 +11,6 @@ class LayoutForPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Layout();
+    return const Layout();
   }
 }

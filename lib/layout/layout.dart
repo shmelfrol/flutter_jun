@@ -23,12 +23,13 @@ class _LayoutState extends State<Layout> {
   Widget build(BuildContext context) {
  var screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       key: scaffoldKey,
      appBar: ResponsiveWidget.isSmallScreen(context)? mobileTopBar(scaffoldKey: scaffoldKey): AppBar(
       title:const Header(),
       backgroundColor: Colors.amber,
       ),
-      drawer: MobileMenu(),
+      drawer: const MobileMenu(),
       body: const Center(
         child: AutoRouter(),
       ),

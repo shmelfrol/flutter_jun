@@ -37,6 +37,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LayoutForPage(),
       );
     },
+    ProductRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ProductRouteArgs>(
+          orElse: () => ProductRouteArgs(id: pathParams.getInt('id')));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductPage(
+          key: args.key,
+          id: args.id,
+        ),
+      );
+    },
     SelectionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -109,6 +121,45 @@ class LayoutForRoute extends PageRouteInfo<void> {
   static const String name = 'LayoutForRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProductPage]
+class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductRoute.name,
+          args: ProductRouteArgs(
+            key: key,
+            id: id,
+          ),
+          rawPathParams: {'id': id},
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductRoute';
+
+  static const PageInfo<ProductRouteArgs> page =
+      PageInfo<ProductRouteArgs>(name);
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, id: $id}';
+  }
 }
 
 /// generated route for

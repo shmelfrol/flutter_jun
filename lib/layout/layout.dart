@@ -2,6 +2,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_jun/block/cart/cart_bloc.dart';
 import 'package:flutter_jun/helpers/responsive.dart';
 import 'package:flutter_jun/layout/header.dart';
 import 'package:flutter_jun/layout/mobileTopBar.dart';
@@ -16,8 +17,7 @@ class Layout extends StatefulWidget {
 
 class _LayoutState extends State<Layout> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-
-
+ 
  
   @override
   Widget build(BuildContext context) {

@@ -24,9 +24,9 @@ class AppRouter extends _$AppRouter {
   path: '/', 
   initial: true,
   children: [
-    AutoRoute(page: HomeRoute.page, path: ''),
-    // AutoRoute(page: SelectionRoute.page, path: ''),
-    AutoRoute(page: SelectionRoute.page, path: 'selection'),
+    AutoRoute(page: HomeRoute.page),
+     AutoRoute(page: SelectionRoute.page, path: ''),
+    //AutoRoute(page: SelectionRoute.page, path: 'selection'),
     AutoRoute(page: CatalogRoute.page, path: 'catalog'),
     AutoRoute(page: ProductRoute.page, path: 'products/view/:id')
  ]

@@ -4,6 +4,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_jun/block/cart/cart_bloc.dart';
+import 'package:flutter_jun/helpers/product.dart';
 import 'package:flutter_jun/router/app_router.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -28,6 +31,7 @@ class Header extends StatefulWidget implements PreferredSizeWidget{
 }
 
 class _HeaderState extends State<Header> {
+  
 
  final TextEditingController _searchController = TextEditingController();
 
@@ -51,7 +55,13 @@ class _HeaderState extends State<Header> {
             Flexible(child: SearchWidget(searchController: _searchController)),
             Expanded(child: const SizedBox(width: 50)),
             LangugeWidget(),
-            CartBtnWidget(),
+            BlocBuilder<CartBloc, CartState>(
+              builder: (context, state){
+                final countProducts=state.products.length;
+
+                return CartBtnWidget(countProducts: countProducts,);
+
+              }),
             const SizedBox(width: 50),
             LoginBtnWidget()
        
@@ -65,4 +75,7 @@ class _HeaderState extends State<Header> {
       ),
     );
   }
+}
+
+class Products {
 }

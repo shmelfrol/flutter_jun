@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jun/api/product_api.dart';
+import 'package:flutter_jun/helpers/product.dart';
 
 
 part 'hit_events.dart';

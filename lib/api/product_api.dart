@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_jun/block/hit/hit_block.dart';
 import 'package:flutter_jun/constants/products.dart';
+import 'package:flutter_jun/helpers/product.dart';
 
 class ProductApi {
 
@@ -21,14 +22,20 @@ products.forEach((p) {
 
 String jsonHits=json.encode(hits);
 
-await Future.delayed(Duration(seconds: 3));
+await Future.delayed(const Duration(seconds: 3));
 
 return jsonHits;
 
 }
 
 
+Future <String> getCart()async {
 
+List<Product> products=generateProducts(10);
+String jsonProducts=json.encode(products);
+await Future.delayed(const Duration(seconds: 1));
+ return jsonProducts;
+}
 
 
 

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jun/block/hit/hit_block.dart';
+import 'package:flutter_jun/helpers/product.dart';
 import 'package:flutter_jun/router/app_router.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -20,12 +21,13 @@ class HomePage extends StatefulWidget {
 
 
 class _HomePageState extends State<HomePage> {
-final hitBloc = HitBloc();
+//final hitBloc =  HitBloc();
 
 
 @override
   void initState() {
-    hitBloc.add(LoadHitsEvent());
+   // hitBloc.add(LoadHitsEvent());
+    context.read<HitBloc>().add(LoadHitsEvent());
     super.initState();
   }
 
@@ -36,7 +38,8 @@ final hitBloc = HitBloc();
     return RefreshIndicator(
        onRefresh: () async {
         
-           hitBloc.add(LoadHitsEvent());
+           //hitBloc.add(LoadHitsEvent());
+           context.read<HitBloc>().add(LoadHitsEvent());
         },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -47,7 +50,6 @@ final hitBloc = HitBloc();
             height: screenSize.width < 900? screenSize.width*2/4: screenSize.width/3,
             color: Colors.white,
             child: BlocBuilder<HitBloc, HitState>(
-              bloc: hitBloc,
               builder: (context, state){
                 final hits = state.hits;
                 if(hits.isNotEmpty) {

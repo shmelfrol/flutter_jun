@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartBtnWidget extends StatelessWidget {
+  final int countProducts;
+
   const CartBtnWidget({
     super.key,
+    required this.countProducts
   });
 
   @override
@@ -33,9 +36,9 @@ class CartBtnWidget extends StatelessWidget {
                   color: Colors.black,
                 ),
                 child:  Center(
-                  child: const Text(
-                    '10',
-                    style: TextStyle(
+                  child: Text(
+                    countProducts.toString(),
+                    style: const TextStyle(
                     color: Colors.white,
                     fontSize: 8, 
                   ),),

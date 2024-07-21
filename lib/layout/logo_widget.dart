@@ -20,7 +20,7 @@ class LogoWidget extends StatelessWidget {
      child: Stack(
       children: [
         InkWell(
-          onTap: () {context.router.push(HomeRoute(title: 'Home'));},
+          onTap: () {context.router.push(const MainRoute());},
         )
       ],
      ),

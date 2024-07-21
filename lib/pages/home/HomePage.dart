@@ -7,26 +7,28 @@ import 'package:flutter_jun/helpers/product.dart';
 import 'package:flutter_jun/router/app_router.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import 'hits_widget.dart';
+import 'novatly_widget.dart';
 import 'product_item_widget.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required String title});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
 
 
 
-class _HomePageState extends State<HomePage> {
+class _MainPageState extends State<MainPage> {
 //final hitBloc =  HitBloc();
 
 
 @override
   void initState() {
-   // hitBloc.add(LoadHitsEvent());
+   
     context.read<HitBloc>().add(LoadHitsEvent());
     super.initState();
   }
@@ -35,63 +37,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     
     var screenSize = MediaQuery.of(context).size;
-    return RefreshIndicator(
-       onRefresh: () async {
-        
-           //hitBloc.add(LoadHitsEvent());
-           context.read<HitBloc>().add(LoadHitsEvent());
-        },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView(
           children: [
             SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
-              Container(
-            height: screenSize.width < 900? screenSize.width*2/4: screenSize.width/3,
-            color: Colors.white,
-            child: BlocBuilder<HitBloc, HitState>(
-              builder: (context, state){
-                final hits = state.hits;
-                if(hits.isNotEmpty) {
-                  return StrageredHitProducts(screenSize: screenSize, hits: hits);
-                }
-                if (state.isLoading == true) {
-                  return const Center(
-                    child: CircularProgressIndicator());
-                }
-
-                  return Text("data!!!!!!!!!");
-              }),
-          ),
-               SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
-           Container(
-            height: screenSize.width/6,
-            color: Colors.transparent,
-            child: ListView(
-              
-              scrollDirection: Axis.horizontal,
-              physics: const AlwaysScrollableScrollPhysics(),
-              children: <Widget>[
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1,),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                ],
-
-
-            ),
-          ),
+            HitsWidget(screenSize: screenSize),
+            SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
+           NovatlyWidget(screenSize: screenSize),
           ],
         ),
-      ) 
-      
-      
-    
-    
     );
   }
 }

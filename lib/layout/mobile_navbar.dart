@@ -20,7 +20,7 @@ class MobileMenu extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              MobileMenuItem(title: "Главная", route: HomeRoute(title: "Главная"),),
+              MobileMenuItem(title: "Главная", route: MainRoute(),),
               const Padding(
                 padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                 child: Divider(

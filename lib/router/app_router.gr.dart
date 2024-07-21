@@ -21,20 +21,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CatalogPage(),
       );
     },
-    HomeRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: HomePage(
-          key: args.key,
-          title: args.title,
-        ),
-      );
-    },
     LayoutForRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const LayoutForPage(),
+      );
+    },
+    MainRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainPage(),
       );
     },
     ProductRoute.name: (routeData) {
@@ -73,43 +69,6 @@ class CatalogRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({
-    Key? key,
-    required String title,
-    List<PageRouteInfo>? children,
-  }) : super(
-          HomeRoute.name,
-          args: HomeRouteArgs(
-            key: key,
-            title: title,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
-
-  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({
-    this.key,
-    required this.title,
-  });
-
-  final Key? key;
-
-  final String title;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key, title: $title}';
-  }
-}
-
-/// generated route for
 /// [LayoutForPage]
 class LayoutForRoute extends PageRouteInfo<void> {
   const LayoutForRoute({List<PageRouteInfo>? children})
@@ -119,6 +78,20 @@ class LayoutForRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LayoutForRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MainPage]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

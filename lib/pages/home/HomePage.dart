@@ -16,74 +16,80 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+
+
+
 class _HomePageState extends State<HomePage> {
+final hitBloc = HitBloc();
+
+
+@override
+  void initState() {
+    hitBloc.add(LoadHitsEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final hitBloc = HitBloc()..add(LoadHitsEvent());
+    
     var screenSize = MediaQuery.of(context).size;
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<HitBloc>(create: (context)=> hitBloc,)
-      ],
-      child: RefreshIndicator(
-         onRefresh: () async {
-            // Replace this delay with the code to be executed during refresh
-            // and return a Future when code finishes execution.
-            return Future<void>.delayed(const Duration(seconds: 3));
-          },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: [
-              SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
-                Container(
-              height: screenSize.width < 900? screenSize.width*2/4: screenSize.width/3,
-              color: Colors.white,
-              child: BlocBuilder<HitBloc, HitState>(
-                bloc: hitBloc,
-                builder: (context, state){
-                  final hits = state.hits;
-                  if(hits.isNotEmpty) {
-                    return StrageredHitProducts(screenSize: screenSize, hits: hits);
-                  }
-                  if (state.isLoading == true) {
-                    return const Center(
-                      child: CircularProgressIndicator());
-                  }
+    return RefreshIndicator(
+       onRefresh: () async {
+        
+           hitBloc.add(LoadHitsEvent());
+        },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
+              Container(
+            height: screenSize.width < 900? screenSize.width*2/4: screenSize.width/3,
+            color: Colors.white,
+            child: BlocBuilder<HitBloc, HitState>(
+              bloc: hitBloc,
+              builder: (context, state){
+                final hits = state.hits;
+                if(hits.isNotEmpty) {
+                  return StrageredHitProducts(screenSize: screenSize, hits: hits);
+                }
+                if (state.isLoading == true) {
+                  return const Center(
+                    child: CircularProgressIndicator());
+                }
 
-                    return Text("data!!!!!!!!!");
-                }),
-            ),
-                 SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
-             Container(
-              height: screenSize.width/6,
-              color: Colors.transparent,
-              child: ListView(
-                
-                scrollDirection: Axis.horizontal,
-                physics: const AlwaysScrollableScrollPhysics(),
-                children: <Widget>[
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1,),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-                  ],
-
-
-              ),
-            ),
-            ],
+                  return Text("data!!!!!!!!!");
+              }),
           ),
-        ) 
-        
-        
+               SectionTitleWidget(title: 'Хиты продаж', buttonAction: (){print("смотреть всех");},),
+           Container(
+            height: screenSize.width/6,
+            color: Colors.transparent,
+            child: ListView(
+              
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              children: <Widget>[
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1,),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+                ],
+
+
+            ),
+          ),
+          ],
+        ),
+      ) 
+      
+      
     
     
-      ),
     );
   }
 }

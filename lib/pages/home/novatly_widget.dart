@@ -12,22 +12,24 @@ class NovatlyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height=(screenSize.width>=900)? screenSize.width/6: 900/6;
+   
     return Container(
-     height: screenSize.width/6,
+     height: height,
      color: Colors.transparent,
      child: ListView(
        
        scrollDirection: Axis.horizontal,
        physics: const AlwaysScrollableScrollPhysics(),
        children: <Widget>[
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1,),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
-         ProductItemWidget(rating: 4, name: "name", price: 50, width: screenSize.width/6, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1,),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
+         ProductItemWidget(rating: 4, name: "name", price: 50, width: height, id: 1),
          ],
 
 

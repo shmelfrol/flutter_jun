@@ -25,6 +25,7 @@ class ProductItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -81,14 +82,27 @@ class ProductItemWidget extends StatelessWidget {
                  ),),
                  BlocBuilder<CartBloc, CartState>(
                   builder:(context, state){
+                    List<Product>productsInCart= state.products;
+                    int count=0;
+                    productsInCart.forEach((e){
+                         if(e.id == id){
+                          count++;
+                         }
+                    });
 
-                     return TextButton(
+
+                     return Row(
+                       children: [
+                         TextButton(
                   onPressed: (){
                     print("add to cart");
-                      context.read<CartBloc>().add(AddOneProductEvent(product: Product(id: id, name: name, hit: false, novetly: false, price: price, rating: rating)));
+                          context.read<CartBloc>().add(AddOneProductEvent(product: Product(id: id, name: name, hit: false, novetly: false, price: price, rating: rating)));
 
                   }, 
-                  child: Text("+"));  
+                  child: const Center(child: Text("+", style: TextStyle(fontSize: 20, color: Colors.black), ))),
+                  if(count>0)Text(count.toString())
+                       ],
+                     );  
                   }),
                  
                ],

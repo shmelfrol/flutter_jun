@@ -179,9 +179,9 @@ class CartProductWidget extends StatelessWidget {
                 height: 50,
                 ),
               Text(name),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Text("цена: ${price.toString()}"),
-               SizedBox(width: 10,),
+               const SizedBox(width: 10,),
               Text("количество: ${count.toString()}")
             ],
           ),

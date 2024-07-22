@@ -20,7 +20,11 @@ import 'menu_item_widget.dart';
 import 'search_widget.dart';
 
 class Header extends StatefulWidget implements PreferredSizeWidget{
-  const Header({super.key});
+   final Function openModal;
+
+  Header({super.key, required this.openModal});
+
+ 
 
   @override
   State<Header> createState() => _HeaderState();
@@ -59,7 +63,7 @@ class _HeaderState extends State<Header> {
               builder: (context, state){
                 final countProducts=state.products.length;
 
-                return CartBtnWidget(countProducts: countProducts,);
+                return CartBtnWidget(countProducts: countProducts, openModal: widget.openModal,);
 
               }),
             const SizedBox(width: 50),

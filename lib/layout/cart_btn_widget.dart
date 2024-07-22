@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 class CartBtnWidget extends StatelessWidget {
   final int countProducts;
+ final Function openModal;
 
   const CartBtnWidget({
     super.key,
-    required this.countProducts
+    required this.countProducts,
+    required this.openModal
   });
 
   @override
@@ -24,7 +26,7 @@ class CartBtnWidget extends StatelessWidget {
             size: 24.0,
             semanticLabel: 'Text to announce in accessibility modes',
           ), 
-            onPressed: () { print("Pressed"); }),
+            onPressed: () {  openModal();}),
             Positioned(
               left:25,
               bottom: 21,

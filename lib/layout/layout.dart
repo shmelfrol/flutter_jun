@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jun/block/cart/cart_bloc.dart';
+import 'package:flutter_jun/helpers/product.dart';
 import 'package:flutter_jun/helpers/responsive.dart';
 import 'package:flutter_jun/layout/header.dart';
 import 'package:flutter_jun/layout/mobileTopBar.dart';
@@ -99,13 +100,32 @@ class ModalCartWidget extends StatelessWidget {
                   child: BlocBuilder<CartBloc, CartState>(
                     builder: (context, state) {
                       if(state.products.isNotEmpty){
+                           List<Product>productsInCart= state.products;
+                           int count=0;
+                           List<CartPosition> cartPositions=[];
+                           productsInCart.forEach((e){
+                            bool sovpadenie=false;
+                             if(cartPositions.isNotEmpty){
 
+                              cartPositions.forEach((element) {
+                                if(e.id == element.product.id) {
+                                  element.count++;
+                                  sovpadenie=true;
+                                }
+                              });  
+                              if(!sovpadenie){
+                                cartPositions.add(CartPosition(product: e, count: 1));
+                              }
+                             }else{
+                              cartPositions.add(CartPosition(product: e, count: 1));
+                             }
+                           });
 
 
                          return ListView(
-                          children: state.products.map((e) {
+                          children: cartPositions.map((e) {
                             
-                            return CartProductWidget(name: e.name, price: e.price,);}
+                            return CartProductWidget(name: e.product.name, price: e.product.price, count: e.count);}
                           ).toList(),
                          );  
                       }else return Text('Cart is empty');
@@ -130,12 +150,14 @@ class ModalCartWidget extends StatelessWidget {
 class CartProductWidget extends StatelessWidget {
   final String name;
   final int price;
+  final int count;
 
 
   const CartProductWidget({
     super.key,
     required this.name,
-    required this.price
+    required this.price,
+    required this.count
   });
 
   @override
@@ -157,7 +179,10 @@ class CartProductWidget extends StatelessWidget {
                 height: 50,
                 ),
               Text(name),
-              Text(price.toString())
+              SizedBox(width: 10,),
+              Text("цена: ${price.toString()}"),
+               SizedBox(width: 10,),
+              Text("количество: ${count.toString()}")
             ],
           ),
         ),

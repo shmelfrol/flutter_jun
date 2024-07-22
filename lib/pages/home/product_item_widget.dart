@@ -75,37 +75,41 @@ class ProductItemWidget extends StatelessWidget {
                ),)
                )
              ),
-             Row(
-               children: [
-                 Text(price.toString(), style: const TextStyle(
-                  fontSize: 18
-                 ),),
-                 BlocBuilder<CartBloc, CartState>(
-                  builder:(context, state){
-                    List<Product>productsInCart= state.products;
-                    int count=0;
-                    productsInCart.forEach((e){
-                         if(e.id == id){
-                          count++;
-                         }
-                    });
-
-
-                     return Row(
-                       children: [
-                         TextButton(
-                  onPressed: (){
-                    print("add to cart");
-                          context.read<CartBloc>().add(AddOneProductEvent(product: Product(id: id, name: name, hit: false, novetly: false, price: price, rating: rating)));
-
-                  }, 
-                  child: const Center(child: Text("+", style: TextStyle(fontSize: 20, color: Colors.black), ))),
-                  if(count>0)Text(count.toString())
-                       ],
-                     );  
-                  }),
-                 
-               ],
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 5.0),
+               child: Row(
+                 children: [
+                   Text("${price.toString()}р", style: const TextStyle(
+                    fontSize: 18
+                   ),),
+                   Expanded(child: SizedBox()),
+                   BlocBuilder<CartBloc, CartState>(
+                    builder:(context, state){
+                      List<Product>productsInCart= state.products;
+                      int count=0;
+                      productsInCart.forEach((e){
+                           if(e.id == id){
+                            count++;
+                           }
+                      });
+             
+             
+                       return Row(
+                         children: [
+                           TextButton(
+                    onPressed: (){
+                      print("add to cart");
+                            context.read<CartBloc>().add(AddOneProductEvent(product: Product(id: id, name: name, hit: false, novetly: false, price: price, rating: rating)));
+             
+                    }, 
+                    child: const Center(child: Text("+", style: TextStyle(fontSize: 20, color: Colors.black), ))),
+                    if(count>0)Text(count.toString())
+                         ],
+                       );  
+                    }),
+                   
+                 ],
+               ),
              ),
              ],)
              

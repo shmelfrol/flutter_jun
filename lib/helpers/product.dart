@@ -47,3 +47,16 @@ class Cart{
 
  Cart({required this.products});
 }
+
+class CartPosition{
+final Product product; 
+int count;
+
+CartPosition({
+  required this.product,
+  required this.count
+});
+
+
+
+}

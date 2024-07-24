@@ -48,10 +48,6 @@ List<Widget> fotoList=[
             controller: _controller,
             itemCount: fotoList.length,
             itemBuilder: (context, index){
-              print(index);
-              if(index!=_selectedIndex){
-                return fotoList[_selectedIndex];
-              }
               return fotoList[index];
                 
             }
@@ -63,24 +59,14 @@ List<Widget> fotoList=[
              IconButton(
               onPressed: (){
                 print(_controller.page);
-                setState(() {
-                  if(_selectedIndex>0) {
-                    _selectedIndex=_selectedIndex-1;
-                  }
-                });
-                 print(_selectedIndex);
+                _controller.previousPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
               }, 
               icon: const Icon(Icons.arrow_back)),
             const Expanded(child: SizedBox()),  
             IconButton(
               onPressed: (){
                 print(_controller.page);
-                setState(() {
-                  if(_selectedIndex<(fotoList.length-1)) {
-                    _selectedIndex=_selectedIndex+1;
-                  }
-                });
-                print(_selectedIndex);
+                 _controller.nextPage(duration: Duration(milliseconds: 300), curve: Curves.linear);
               }, 
               icon: const Icon(Icons.arrow_forward)),
           ],

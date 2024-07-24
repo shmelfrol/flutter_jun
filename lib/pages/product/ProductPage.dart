@@ -43,7 +43,10 @@ class _ProductPageState extends State<ProductPage> {
                   child: Row(children: [
                     Container(
                       width: 19*screenSize.width/30,
-                      color: Colors.green,
+                      decoration: BoxDecoration(
+                       color: Colors.transparent, 
+                       borderRadius: BorderRadius.circular(5)
+                      ),
                       child: Center(
                         child: CoverCard(),
                       ),

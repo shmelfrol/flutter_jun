@@ -21,10 +21,11 @@ class _CoverCardState extends State<CoverCard> {
 
 
 List<Widget> fotoList=[
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
-    Container(color: Colors.orange),
-    Container(color: Colors.red)
+    SlideFotoWidget(color: Colors.green, img: "assets/images/tishort-1.jpg",),
+    SlideFotoWidget(color: Colors.yellow, img: "assets/images/tishort-2.jpg",),
+    SlideFotoWidget(color: Colors.blue, img: "assets/images/tishort-3.jpg",),
+    SlideFotoWidget(color: Colors.brown, img: "assets/images/tishort-4.jpg",),
+   
 ];
  @override
   void initState() {
@@ -63,26 +64,50 @@ List<Widget> fotoList=[
               onPressed: (){
                 print(_controller.page);
                 setState(() {
-                  if(_selectedIndex>0)
-                  _selectedIndex=_selectedIndex-1;
+                  if(_selectedIndex>0) {
+                    _selectedIndex=_selectedIndex-1;
+                  }
                 });
                  print(_selectedIndex);
               }, 
-              icon: Icon(Icons.arrow_back)),
+              icon: const Icon(Icons.arrow_back)),
             const Expanded(child: SizedBox()),  
             IconButton(
               onPressed: (){
                 print(_controller.page);
                 setState(() {
-                  if(_selectedIndex<(fotoList.length-1))
-                  _selectedIndex=_selectedIndex+1;
+                  if(_selectedIndex<(fotoList.length-1)) {
+                    _selectedIndex=_selectedIndex+1;
+                  }
                 });
                 print(_selectedIndex);
               }, 
-              icon: Icon(Icons.arrow_forward)),
+              icon: const Icon(Icons.arrow_forward)),
           ],
         ))
       ],
+    );
+  }
+}
+
+class SlideFotoWidget extends StatelessWidget {
+  Color color;
+  String img;
+  SlideFotoWidget({
+    super.key,
+    required this.color,
+    required this.img
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    decoration: BoxDecoration(
+      color: color,
+      image: DecorationImage(
+        image: AssetImage(img),
+        )
+    ),
     );
   }
 }

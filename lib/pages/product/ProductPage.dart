@@ -31,36 +31,65 @@ class _ProductPageState extends State<ProductPage> {
       onRefresh: ()async{print("object");},
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: [
-                ProductPageTitleWidget(),
-                const SizedBox(height: 10,),
-                Container(
-                  color: Colors.transparent,
-                  height: screenSize.width/3,
-                  child: Row(children: [
-                    Container(
-                      width: 19*screenSize.width/30,
-                      child: Center(
-                        child: CoverCard(),
-                      ),
+        child: ListView(
+          children: [
+              ProductPageTitleWidget(),
+              const SizedBox(height: 10,),
+              Container(
+                color: Colors.transparent,
+                height: screenSize.width/3 - 18,
+                child: Row(children: [
+                  Container(
+                    width: 20*screenSize.width/30 - 8,
+                    child: Center(
+                      child: CoverCard(),
                     ),
-                    SizedBox(width: 15,),
-                    Container(
-                      width: 10*screenSize.width/30,
-                      color: Colors.deepPurple
-                    )
-                  ]),
-                ),
-                const SizedBox(height: 10,),
-                Container(
-                  color: Colors.blueGrey,
-                  height: 200,
-                )
-            ],
-          ),
+                  ),
+                  SizedBox(width: 10,),
+                  Container(
+                    width: 10*screenSize.width/30 - 18,
+                    color: Colors.transparent,
+                    child: GridView.count(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                        ),
+                      ],
+                      
+                      ),
+                  )
+                ]),
+              ),
+              const SizedBox(height: 10,),
+              Container(
+                color: Colors.blueGrey,
+                height: 200,
+              )
+          ],
         ),
       ), 
       );

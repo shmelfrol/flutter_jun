@@ -63,9 +63,10 @@ List<Widget> fotoList=[
               onPressed: (){
                 print(_controller.page);
                 setState(() {
-                  if(_selectedIndex<0)
+                  if(_selectedIndex>0)
                   _selectedIndex=_selectedIndex-1;
                 });
+                 print(_selectedIndex);
               }, 
               icon: Icon(Icons.arrow_back)),
             const Expanded(child: SizedBox()),  
@@ -76,6 +77,7 @@ List<Widget> fotoList=[
                   if(_selectedIndex<(fotoList.length-1))
                   _selectedIndex=_selectedIndex+1;
                 });
+                print(_selectedIndex);
               }, 
               icon: Icon(Icons.arrow_forward)),
           ],

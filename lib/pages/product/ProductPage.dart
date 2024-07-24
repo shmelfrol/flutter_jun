@@ -38,15 +38,11 @@ class _ProductPageState extends State<ProductPage> {
                 ProductPageTitleWidget(),
                 const SizedBox(height: 10,),
                 Container(
-                  color: Colors.orange,
+                  color: Colors.transparent,
                   height: screenSize.width/3,
                   child: Row(children: [
                     Container(
                       width: 19*screenSize.width/30,
-                      decoration: BoxDecoration(
-                       color: Colors.transparent, 
-                       borderRadius: BorderRadius.circular(5)
-                      ),
                       child: Center(
                         child: CoverCard(),
                       ),

@@ -104,6 +104,7 @@ class SlideFotoWidget extends StatelessWidget {
     return Container(
     decoration: BoxDecoration(
       color: color,
+      borderRadius: BorderRadius.circular(5),
       image: DecorationImage(
         image: AssetImage(img),
         )
